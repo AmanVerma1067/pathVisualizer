@@ -15,15 +15,14 @@ from maze import generate_maze
 
 app = FastAPI(title="Path Visualizer API")
 
-# CORS configuration - IMPORTANT: Update with your Vercel URL after deployment
+# CORS configuration - Updated to allow your Vercel domain
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "https://*.vercel.app",  # Allows all Vercel preview deployments
-        # Add your production URL after deployment:
-        # "https://your-app.vercel.app",
+        "https://path1067.vercel.app",  # Your production URL
+        "https://*.vercel.app",          # All Vercel preview deployments
+        "http://localhost:5173",         # Local development
+        "http://localhost:3000",         # Alternative local port
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -50,6 +49,14 @@ class PathResponse(BaseModel):
 
 class MazeResponse(BaseModel):
     grid: List[int]
+
+@app.get("/")
+async def root():
+    return {"message": "Path Visualizer API", "status": "running"}
+
+@app.get("/api/health")
+async def health_check():
+    return {"status": "healthy"}
 
 @app.post("/api/dijkstra", response_model=PathResponse)
 async def run_dijkstra(request: GridRequest):
@@ -163,10 +170,6 @@ async def create_maze(request: MazeRequest):
         return MazeResponse(grid=grid.flatten().tolist())
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/api/health")
-async def health_check():
-    return {"status": "healthy"}
 
 if __name__ == "__main__":
     import uvicorn
