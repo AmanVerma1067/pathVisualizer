@@ -1,4 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Use the production backend URL when in production
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD 
+    ? 'https://path-visualizer-backend.onrender.com' 
+    : 'http://localhost:8000');
 
 export const algorithmEndpoints = {
   dijkstra: '/api/dijkstra',
@@ -28,7 +32,10 @@ export async function runAlgorithm(endpoint, grid, start, end, rows, cols) {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        `HTTP error! status: ${response.status}, message: ${errorData.detail || 'Unknown error'}`
+      );
     }
 
     return await response.json();
@@ -54,7 +61,10 @@ export async function generateMaze(start, end, rows, cols) {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        `HTTP error! status: ${response.status}, message: ${errorData.detail || 'Unknown error'}`
+      );
     }
 
     return await response.json();
