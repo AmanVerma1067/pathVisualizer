@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+myenv/
+
+*.egg
+
+# Node.js
+frontend/node_modules/
+frontend/package-lock.json
+
+# Environment variables
+.env
