@@ -1,11 +1,11 @@
-import PathVisulizer from "./PathVisilizer/PathVisliser.jsx"
+import PathVisualizer from "./PathVisualizer/PathVisualizer.jsx";
 function App() {
     function handlemouse(e){
         e.preventDefault();
     }
   return (
     <div onClick={handlemouse} onMouseDown={handlemouse}>
-      <PathVisulizer  />
+      <PathVisualizer  />
     </div>
   )
 }
