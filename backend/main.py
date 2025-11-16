@@ -13,12 +13,18 @@ from algorithms.bellman_ford import bellman_ford_grid
 from algorithms.bi_swarm import bi_swarm_grid
 from maze import generate_maze
 
-app = FastAPI()
+app = FastAPI(title="Path Visualizer API")
 
-# CORS configuration
+# CORS configuration - IMPORTANT: Update with your Vercel URL after deployment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Vite default port
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://*.vercel.app",  # Allows all Vercel preview deployments
+        # Add your production URL after deployment:
+        # "https://your-app.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
