@@ -2,7 +2,8 @@
 
 **Path Visualizer** is a web-based tool for visualizing classic pathfinding algorithms. Built with a high-performance **Python/FastAPI** backend and responsive **React** frontend.
 
-🔗 **Live Demo**: [path-visualizer.vercel.app](https://path-visualizer.vercel.app)
+🔗 **Live Demo**: [path1067.vercel.app](https://path1067.vercel.app/)  
+🔗 **API Backend**: [path-visualizer-backend.onrender.com](https://path-visualizer-backend.onrender.com)
 
 ---
 
@@ -39,6 +40,7 @@
 ---
 
 ### Installation
+
 ```bash
 # 1. Clone the repo
 git clone https://github.com/Priyansh6747/Path-Visualizer.git
@@ -71,6 +73,16 @@ The application will be available at:
 
 ---
 
+## 🌐 Live Deployment
+
+The application is deployed and accessible at:
+
+- **Frontend**: [https://path1067.vercel.app/](https://path1067.vercel.app/)
+- **Backend API**: [https://path-visualizer-backend.onrender.com](https://path-visualizer-backend.onrender.com)
+- **API Documentation**: [https://path-visualizer-backend.onrender.com/docs](https://path-visualizer-backend.onrender.com/docs)
+
+---
+
 ## 🏗️ Architecture
 
 ### Backend (Python + FastAPI)
@@ -78,12 +90,14 @@ The application will be available at:
 - **NumPy** for efficient grid operations
 - Separate algorithm modules for maintainability
 - Async endpoints for better performance
+- Deployed on **Render**
 
 ### Frontend (React + Vite)
 - **React 19** for UI components
 - **Styled Components** for styling
 - **Vite** for fast development and builds
 - State management with React hooks
+- Deployed on **Vercel**
 
 ---
 
@@ -92,6 +106,7 @@ The application will be available at:
 Contributions are welcome! Whether it's improving the UI, optimizing algorithms, adding new features, or fixing bugs.
 
 ### How to Contribute
+
 ```bash
 # 1. Fork the repo
 # 2. Create a feature branch
@@ -107,6 +122,7 @@ git push origin your-feature-name
 ---
 
 ## 📁 Project Structure
+
 ```
 Path-Visualizer/
 ├── backend/
@@ -127,18 +143,32 @@ Path-Visualizer/
 
 ## 🚀 Deployment
 
-### Backend Deployment (Railway/Render/Heroku)
+### Backend Deployment (Render)
+
+The backend is deployed on Render at [https://path-visualizer-backend.onrender.com](https://path-visualizer-backend.onrender.com)
+
+**Deployment Steps:**
 ```bash
 cd backend
-# Add Procfile: web: uvicorn main:app --host 0.0.0.0 --port $PORT
+# Add Procfile or configure build command:
+# Build Command: pip install -r requirements.txt
+# Start Command: uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
 
-### Frontend Deployment (Vercel/Netlify)
+### Frontend Deployment (Vercel)
+
+The frontend is deployed on Vercel at [https://path1067.vercel.app/](https://path1067.vercel.app/)
+
+**Deployment Steps:**
 ```bash
 cd frontend
 npm run build
-# Deploy the dist/ folder
+# Deploy the dist/ folder to Vercel
 ```
+
+**Environment Configuration:**
+- Update the API base URL in the frontend to point to the Render backend
+- Configure CORS settings in the backend to allow requests from the Vercel frontend
 
 ---
 
